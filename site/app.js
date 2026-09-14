@@ -24,6 +24,8 @@ const BRANCH_RULES = {
   ],
 };
 
+const STATE_LIST = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","DC","Other"];
+
 const STEPS = {
   who: {
     title: "Who is reporting?",
@@ -143,8 +145,6 @@ const STEPS = {
     ],
   },
 };
-
-const STATE_LIST = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","DC","Other"];
 
 const VACCINE_SUGGEST = [
   "COVID-19 (mRNA)", "COVID-19 (protein subunit)", "Influenza (seasonal)", "Influenza (nasal)",
@@ -267,7 +267,7 @@ function renderStep() {
   $("#wiz-step-label").textContent = `Step ${wiz.stepIndex + 1} of ${total} — ${step.title}`;
   $("#wiz-pct").textContent = `${pct}%`;
   $("#wiz-bar").setAttribute("aria-valuenow", String(pct));
-  $("#wiz-bar").firstElementChild.style.width = pct + "%";
+  $("#wiz-bar .progress-fill").style.width = pct + "%";
 
   $("#assist-why").textContent = step.why;
 
