@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VAERS Modernized Reporting — Prototype | Idealistic Solutions LLC</title>
+<meta name="description" content="Interactive prototype of a modernized VAERS reporting experience, demonstrating branching-logic workflow, intelligent assistance, and Section 508 conformance. Demonstration only — synthetic data.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b3d91'/%3E%3Cpath d='M9 8l7 16 7-16h-4l-3 7-3-7z' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ══════════════ PROTOTYPE BANNER ══════════════ -->
+<div class="proto-banner" role="note" aria-label="Prototype notice">
+  <p><strong>Interactive Prototype — Tab 2-2.</strong> Demonstration of the proposed modernized VAERS reporting experience. <strong>Synthetic data only</strong> — no live systems, no personal data, nothing is submitted. Prepared by Idealistic Solutions LLC for Solicitation 75D301-26-Q-00146.</p>
+  <button type="button" class="btn-ghost banner-toggle" id="guide-open" aria-haspopup="dialog">Open Prototype Guide</button>
+</div>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="#" class="brand" id="home-link" aria-label="VAERS Modernized Reporting — home">
+      <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#fff" fill-opacity=".12"/><path d="M9 8l7 16 7-16h-4l-3 7-3-7z" fill="#fff"/></svg>
+      <span>
+        <strong>Vaccine Adverse Event Reporting System</strong>
+        <small>Modernized Reporting Prototype — HHS · CDC</small>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#faqs" class="navlink" data-nav="faqs">FAQs</a>
+      <a href="#downloads" class="navlink" data-nav="downloads">Data &amp; Downloads</a>
+      <a href="#" class="navlink" id="nav-start">Report an Event</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════ LANDING ══════════════ -->
+<main id="main">
+<section id="view-landing" class="view" aria-labelledby="landing-h1">
+  <div class="wrap">
+    <div class="hero">
+      <h1 id="landing-h1">Report an adverse event following vaccination — <em>made simpler</em></h1>
+      <p class="lede">This redesigned experience guides every submitter through exactly the questions that apply to them. Choose the path that describes you, and the form adapts as you answer.</p>
+      <div class="hero-cta">
+        <button type="button" class="btn btn-primary btn-lg" data-start="public">Start a report — Member of the public</button>
+        <button type="button" class="btn btn-outline btn-lg" data-start="provider">Start a report — Healthcare provider</button>
+      </div>
+      <p class="hint">Not sure? <button type="button" class="linkish" data-start="public">Start here</button> — the wizard will route you correctly.</p>
+    </div>
+
+    <div class="paths">
+      <article class="path-card" id="card-public">
+        <h2><span class="badge badge-blue">Path A</span> Members of the public</h2>
+        <p>Patients, parents, caregivers, and family members. Simple language, no medical coding knowledge needed, optional fields clearly marked.</p>
+        <ul>
+          <li>Plain-language questions, one topic per step</li>
+          <li>Save-and-return preview (shown in the guide)</li>
+          <li>Free-text box for anything we didn't ask</li>
+        </ul>
+        <button type="button" class="btn btn-primary" data-start="public">Begin public report</button>
+      </article>
+      <article class="path-card" id="card-provider">
+        <h2><span class="badge badge-teal">Path B</span> Healthcare providers</h2>
+        <p>Clinics, pharmacies, and hospitals. Structured clinical capture, facility details, and professional terminology — with smart defaults from your profile (simulated).</p>
+        <ul>
+          <li>Clinical detail: vaccine lot, onset interval, outcome</li>
+          <li>Facility &amp; NPI pre-fill from simulated profile</li>
+          <li>Supplemental document suggestions</li>
+        </ul>
+        <button type="button" class="btn btn-teal" data-start="provider">Begin provider report</button>
+      </article>
+    </div>
+
+    <section id="faqs" class="panel-section" aria-labelledby="faqs-h2">
+      <h2 id="faqs-h2">Frequently asked questions</h2>
+      <p class="section-sub">Ask a question in place — the reactive assistant answers from this list without leaving the page.</p>
+      <div class="faq-grid" id="faq-grid"><!-- rendered by app.js --></div>
+    </section>
+
+    <section id="downloads" class="panel-section" aria-labelledby="dl-h2">
+      <h2 id="dl-h2">Data &amp; downloads</h2>
+      <div class="dl-grid">
+        <a href="#" class="dl-card" data-demo-dl><span class="dl-icon" aria-hidden="true">📊</span><span><strong>VAERS summary data</strong><small>Simulated dataset (CSV) — prototype sample</small></span></a>
+        <a href="#" class="dl-card" data-demo-dl><span class="dl-icon" aria-hidden="true">📄</span><span><strong>Report form (printable)</strong><small>Reference copy of the data elements captured</small></span></a>
+        <a href="#" class="dl-card" data-demo-dl><span class="dl-icon" aria-hidden="true">📘</span><span><strong>Reporting guide</strong><small>Who should report, and what happens next</small></span></a>
+      </div>
+      <p class="fineprint">Downloads in this prototype return a generated sample document, clearly labelled as synthetic. In production these would link the live VAERS data services.</p>
+    </section>
+  </div>
+</section>
+
+<!-- ══════════════ WIZARD ══════════════ -->
+<section id="view-wizard" class="view" hidden aria-labelledby="wiz-h1">
+  <div class="wrap wizard-wrap">
+    <div class="wizard-head">
+      <h1 id="wiz-h1" class="visually-hidden">Report an adverse event</h1>
+      <button type="button" class="btn-ghost" id="wiz-exit">← Exit to home</button>
+      <div class="progress-block">
+        <div class="progress-meta"><span id="wiz-step-label" aria-live="polite">Step 1 of 8</span><span id="wiz-pct">10%</span></div>
+        <div class="progress-bar" role="progressbar" aria-labelledby="wiz-step-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" id="wiz-bar"><span class="progress-fill" style="width:10%"></span></div>
+      </div>
+    </div>
+
+    <div class="wizard-body">
+      <form id="wiz-form" novalidate>
+        <div id="wiz-steps"><!-- rendered by app.js --></div>
+
+        <div class="wiz-nav">
+          <button type="button" class="btn btn-outline" id="wiz-back">← Back</button>
+          <button type="button" class="btn btn-primary" id="wiz-next">Continue →</button>
+          <button type="button" class="btn btn-teal" id="wiz-submit" hidden>Submit report</button>
+        </div>
+      </form>
+
+      <aside class="wiz-side" aria-label="Assistance">
+        <div class="assist-card">
+          <h2>Ask a question</h2>
+          <p class="fineprint">Reactive FAQ assistant — answers from the reporting guide, in place.</p>
+          <div class="ask-row">
+            <input type="text" id="ask-input" placeholder="e.g. What if I only know the vaccine name?" aria-label="Type your question">
+            <button type="button" class="btn btn-primary" id="ask-btn">Ask</button>
+          </div>
+          <div id="ask-out" class="ask-out" role="status" aria-live="polite"></div>
+          <button type="button" class="linkish" id="ask-suggest">Suggest a question for me</button>
+        </div>
+        <div class="assist-card">
+          <h2>Why we ask</h2>
+          <p id="assist-why" class="assist-why">Each step explains its purpose here — intelligent context, not a wall of text.</p>
+        </div>
+        <div class="assist-card">
+          <h2>Prototype notes</h2>
+          <p class="fineprint">Free-text box available on every step. Nothing is transmitted — “Submit” shows a confirmation preview only. Press <kbd>?</kbd> anytime for help.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SUMMARY / CONFIRM ══════════════ -->
+<section id="view-summary" class="view" hidden aria-labelledby="sum-h1">
+  <div class="wrap narrow">
+    <div class="confirm-card" role="status">
+      <div class="confirm-icon" aria-hidden="true">✓</div>
+      <h1 id="sum-h1">Report received (prototype)</h1>
+      <p class="lede">In production, a confirmation number would be issued and the record would flow to VAERS data services in the existing structured format. This prototype transmits nothing.</p>
+      <div class="sum-box">
+        <h2>What you told us</h2>
+        <dl id="sum-list" class="sum-list"><!-- rendered --></dl>
+      </div>
+      <div class="sum-actions">
+        <button type="button" class="btn btn-outline" id="sum-pdf">Print / save summary</button>
+        <button type="button" class="btn btn-primary" id="sum-home">Return to home</button>
+      </div>
+      <p class="fineprint">Confirmation #VAERS-PROTO-<span id="sum-ref">000000</span> · Generated by the Tab 2-2 prototype · Synthetic data only</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p><strong>Idealistic Solutions LLC</strong> · UEI WYS8ZLS93MM9 · CAGE 235X4 · <a href="mailto:Eslam.H@IdealisticSolutions.com">Eslam.H@IdealisticSolutions.com</a> · (347) 209-8683</p>
+    <p class="fineprint">Interactive prototype for Solicitation 75D301-26-Q-00146 (Tab 2-2). Synthetic data only. Not a production system; no PHI/PII is collected or stored.</p>
+  </div>
+</footer>
+</main>
+
+<!-- ══════════════ GUIDE DIALOG ══════════════ -->
+<div class="dialog-backdrop" id="guide-backdrop" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="guide-h2">
+    <div class="dialog-head">
+      <h2 id="guide-h2">Prototype Guide — how this maps to the evaluation criteria</h2>
+      <button type="button" class="btn-ghost" id="guide-close" aria-label="Close guide">✕ Close</button>
+    </div>
+    <div class="dialog-body" id="guide-body"><!-- rendered by app.js --></div>
+  </div>
+</div>
+
+<!-- toast -->
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
